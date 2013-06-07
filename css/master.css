@@ -1,0 +1,14 @@
+.container {
+  width: 960px; }
+
+.pai {
+  width: 480px;
+  padding-right: 10px;
+  padding-left: 10px;
+  float: left; }
+
+.filho {
+  width: 240px;
+  padding-right: 10px;
+  padding-left: 10px;
+  float: left; }

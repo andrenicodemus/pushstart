@@ -1,0 +1,40 @@
+// -----------------------------------------------------------------------------
+// Grid
+// -----------------------------------------------------------------------------
+
+$grid-columns: 12 !default;
+$grid-gutter: 20px !default;
+$grid-width: 960px !default;
+
+@function column(
+    $span,
+    $columns: $grid-columns,
+    $width: $grid-width
+) {
+    @return $span * ($width / $columns);
+}
+
+@function gutter()
+{
+    @return $grid-gutter / 2;
+}
+
+@mixin column($span, $columns: $grid-columns, $width: $grid-width)
+{
+    width: column($span, $columns, $width);
+    padding-right: gutter();
+    padding-left: gutter();
+    float: left;
+}
+
+.container {
+    width: $grid-width;
+}
+
+.pai {
+    @include column(6);
+}
+
+.filho {
+    @include column(3);
+}

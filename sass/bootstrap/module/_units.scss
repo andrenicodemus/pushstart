@@ -1,0 +1,120 @@
+$units-base: 16px !default;
+
+@function number($value)
+{
+    $unit: unit($value);
+
+    @if $unit == "cm" {
+        $unit: 1cm;
+    } @elseif $unit == "em" {
+        $unit: 1em;
+    } @elseif $unit == "in" {
+        $unit: 1in;
+    } @elseif $unit == "mm" {
+        $unit: 1mm;
+    } @elseif $unit == "pc" {
+        $unit: 1pc;
+    } @elseif $unit == "%" {
+        $unit: 1%;
+    } @elseif $unit == "pt" {
+        $unit: 1pt;
+    } @elseif $unit == "px" {
+        $unit: 1px;
+    } @elseif $unit == "rem" {
+        $unit: 1rem;
+    } @else {
+        $unit: 1;
+    }
+
+    @return $value / $unit;
+}
+
+@function px($value)
+{
+    $unit: unit($value);
+
+    @if $unit == "cm" {
+        $unit: $units-base * 0.026458333 / 16px;
+    } @elseif $unit == "em" {
+        $unit: $units-base * 0.0625 / 16px;
+    } @elseif $unit == "in" {
+        $unit: $units-base * 0.010416667 / 16px;
+    } @elseif $unit == "mm" {
+        $unit: $units-base * 0.264583333 / 16px;
+    } @elseif $unit == "pc" {
+        $unit: $units-base * 0.0625 / 16px;
+    } @elseif $unit == "pt" {
+        $unit: $units-base * 0.75 / 16px;
+    } @elseif $unit == "px" {
+        $unit: $units-base * 1 / 16px;
+    } @elseif $unit == "rem" {
+        $unit: $units-base * 0.0625 / 16px;
+    } @else {
+        $unit: 1;
+    }
+
+    @return number($value) / $unit * 1px;
+}
+
+@function cm($value)
+{
+    @if unitless($value) {
+        @return $value * 1cm;
+    } @else {
+        @return number(px($value)) * 0.026458333cm;
+    }
+}
+
+@function em($value)
+{
+    @if unitless($value) {
+        @return $value * 1em;
+    } @else {
+        @return number(px($value)) * 0.0625em;
+    }
+}
+
+@function in($value)
+{
+    @if unitless($value) {
+        @return $value * 1in;
+    } @else {
+        @return number(px($value)) * 0.010416667in;
+    }
+}
+
+@function mm($value)
+{
+    @if unitless($value) {
+        @return $value * 1mm;
+    } @else {
+        @return number(px($value)) * 0.264583333mm;
+    }
+}
+
+@function pc($value)
+{
+    @if unitless($value) {
+        @return $value * 1pc;
+    } @else {
+        @return number(px($value)) * 0.0625pc;
+    }
+}
+
+@function pt($value)
+{
+    @if unitless($value) {
+        @return $value * 1pt;
+    } @else {
+        @return number(px($value)) * 0.75pt;
+    }
+}
+
+@function rem($value)
+{
+    @if unitless($value) {
+        @return $value * 1rem;
+    } @else {
+        @return number(px($value)) * 0.0625rem;
+    }
+}
